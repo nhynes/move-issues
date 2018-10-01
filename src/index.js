@@ -6,9 +6,13 @@ const sendMessage = require('probot-messages');
 const App = require('./move');
 const schema = require('./schema');
 
-module.exports = async robot => {
+module.exports = async (robot, commandFormat) => {
   const github = await robot.auth();
   const {name: appName, html_url: appUrl} = (await github.apps.get({})).data;
+
+  if (commandFormat !== undefined) {
+    commands.setCommandFormat(commandFormat);
+  }
 
   commands(robot, 'move', async (context, command) => {
     if (context.isBot || context.payload.issue.pull_request) {
