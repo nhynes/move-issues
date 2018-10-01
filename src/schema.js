@@ -20,7 +20,7 @@ const schema = Joi.object().keys({
     .description('Mention issue and comment authors'),
 
   keepContentMentions: Joi.boolean()
-    .default(false)
+    .default(true)
     .description('Preserve mentions in the issue content'),
 
   moveLabels: Joi.boolean()
