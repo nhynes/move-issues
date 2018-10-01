@@ -38,7 +38,7 @@ module.exports = async (robot, commandFormat) => {
     try {
       let repoConfig = await getMergedConfig(context, file);
       if (!repoConfig) {
-        repoConfig = {perform: false};
+        repoConfig = {};
       }
       const {error, value} = schema.validate(repoConfig);
       if (error) {
